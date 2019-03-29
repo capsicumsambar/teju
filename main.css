@@ -1,0 +1,46 @@
+  
+  * {
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+
+    }
+  body {
+      margin: 0;
+      font-size: 1em;
+    }
+  .jumbotron{
+      background-color: white;
+    }
+  .jumbotron h1{
+    font-size: 5em;
+    color: green;
+    margin-bottom: 50px;
+   }
+
+   table{
+    font-size: 5em;
+   }
+   #no1{
+    color: red;
+   }
+   #no2{
+    color: blue;
+   }
+   input{
+    width: 200px;
+    border-color: red;
+   }
+   #no3{
+    font-size: 0.5em;
+   }
+   #check{
+    background-color: orange;
+
+   }
+   a{
+    font-size: 3em;
+    background-color: hotpink;
+    font-color: white;
+   
+   }
