@@ -19,40 +19,62 @@
         <link rel="stylesheet" type="text/css" href="main.css">
 
     </head>
-    <body>
-        <div class="jumbotron text-center">
-          <h1 id="header"><img src="tejas.JPG" width="256" height="256"> </h1>          
-        </div>
-        <div class="container">
+    <body>                              
+        <div class="flex-container">
+          <div><img src="tejas.JPG" width="200" height="200"> </div>
+          <div id="sticker"></div>
+          <audio id="airhorn" src="airhorn.mp3" autoplay="false" ></audio>
+        </div>  
+        
+        <div class="flex-container">
           <table class="table table-borderless">
             <tr>
               <td id="no1" colspan="2"></td>
               <td colspan="2">+</td>
               <td id="no2" colspan="2">5</td>
               <td colspan="2">=</td>
-              <td><input type="number" name="display" value=total()></input></td>
+              <td><input type="number" id="numinput" name="display"></input></td>
               <td id ="no3">And the answer is..</td>
               <td colspan="2"><button id="check">Check</button></td>
             </tr>
-          </table>
-          <button><a onClick="window.location.reload()">Try another</a></button>        
+          </table>        
         </div>
-        <script>
-          document.getElementById("no1").innerHTML = Math.floor(Math.random() * 5) + 1;
-          var no1 = document.getElementById("no1").innerHTML
-          document.getElementById("no2").innerHTML = Math.floor(Math.random() * 5) + 1;
-          var no2 = document.getElementById("no2").innerHTML
-          $(document).ready(function(){
-              $("#check").click(function(){
-                document.getElementById("no3").innerHTML = no1*1 + no2*1;
-                $("#no3").css('font-size','1em');
-                 $('h1').append("<img src='car.jpg' height='100' width='100'/>"); 
-              });
-              
-              
-              
-            });
+        <button><a onClick="tryAnother()">Try another</a></button>
 
+        <script>
+
+          document.getElementById("no1").innerHTML = Math.floor(Math.random() * 9) + 1;
+          var no1 = document.getElementById("no1").innerHTML;
+          document.getElementById("no2").innerHTML = Math.floor(Math.random() * 9) + 1;
+          var no2 = document.getElementById("no2").innerHTML;
+
+          function tryAnother(){
+            $("#check").attr("disabled", false);  
+            $("#no3").css('font-size','0.5em');
+            document.getElementById("no1").innerHTML = Math.floor(Math.random() * 9) + 1;
+            no1 = document.getElementById("no1").innerHTML;
+            document.getElementById("no2").innerHTML = Math.floor(Math.random() * 9) + 1;
+            no2 = document.getElementById("no2").innerHTML;
+            document.querySelector('#numinput').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
+            // document.querySelector('#sticker').innerHTML = "";
+            document.querySelector('#no3').innerHTML = "And the answer is..";
+
+              };
+
+          $(document).ready(function(){
+              $("#check").click(function(){ //click event 
+                document.querySelector("#no3").innerHTML = no1*1 + no2*1;
+                $("#no3").css('font-size','1em');
+              if($('#numinput').val()*1 == document.querySelector("#no3").innerHTML*1){
+                $('#sticker').append("<img src='animated-balloon.gif' />");
+                document.querySelector('#airhorn').play();
+                $("#check").attr("disabled", true); 
+                } 
+                else document.querySelector('#sticker').innerHTML = "";
+            });        
+          });
+
+             
         </script>     
     </body>
 </html>

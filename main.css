@@ -9,14 +9,13 @@
       margin: 0;
       font-size: 1em;
     }
-  .jumbotron{
-      background-color: white;
-    }
-  .jumbotron h1{
-    font-size: 5em;
-    color: green;
-    margin-bottom: 50px;
-   }
+
+  .flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 20px 20px;
+  }
 
    table{
     font-size: 5em;
@@ -37,6 +36,9 @@
    #check{
     background-color: orange;
 
+   }
+   button{
+    margin: 20px 20px;
    }
    a{
     font-size: 3em;
