@@ -56,7 +56,6 @@
             document.getElementById("no2").innerHTML = Math.floor(Math.random() * 9) + 1;
             no2 = document.getElementById("no2").innerHTML;
             document.querySelector('#numinput').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
-            // document.querySelector('#sticker').innerHTML = "";
             document.querySelector('#no3').innerHTML = "And the answer is..";
 
               };
@@ -67,10 +66,11 @@
                 $("#no3").css('font-size','1em');
               if($('#numinput').val()*1 == document.querySelector("#no3").innerHTML*1){
                 $('#sticker').append("<img src='animated-balloon.gif' />");
+                $('#sticker').append("<img src='car.jpg' width='120' height='120' />");
                 document.querySelector('#airhorn').play();
                 $("#check").attr("disabled", true); 
                 } 
-                else document.querySelector('#sticker').innerHTML = "";
+                
             });        
           });
 
