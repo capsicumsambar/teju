@@ -25,11 +25,25 @@
             <h2> Puzzles! Start Playing now!</h2>
         </div>
         <!-- Section where stickers appear -->
-        <div class="flex-container">
-          <div id="sticker">Stickers for correct answers --> </div>
-          <audio id="airhorn" src="airhorn.mp3" autoplay="false" ></audio>
-        </div>  
+          <div id="sticker">
+            <h3>How many stickers can you get?</h3>
+          </div>
+          <audio id="airhorn" src="airhorn.mp3" autoplay="false"></audio>
+     
+          
         <!-- Inputs and events -->
+
+       <!--  <div class="container">
+          <div class="row align-items-center">
+              <div class="col" id="no1"></div>
+              <div class="col">+</div>
+              <div class="col" id="no2"></div>
+              <div class="col">=</div>
+              <div class="col"><input type="number" id="numinput" name="display"></input></div>
+              <div class="col" id="no3">And the answer is...</div>
+              <div class="col"><button id="check" disabled="true">Check</button></div>
+          </div>       
+        </div> -->
         <div class="flex-container">
           <table class="table table-borderless">
             <tr>
@@ -74,8 +88,9 @@
                 document.querySelector("#no3").innerHTML = no1*1 + no2*1; //adds the two numbers and prints result
                 $("#no3").css('font-size','1em');
                 if($('#numinput').val()*1 == document.querySelector("#no3").innerHTML*1){ //checks user input vs sum of the two numbers calculated
-                  $('#sticker').append("<img src='animated-balloon.gif' />");//if user input equals calculation then appends sticker
-                  $('#sticker').append("<img src='car.jpg' width='120' height='120' />");
+                  $('h3').remove();
+                  // $('#sticker').append("<div class='sticker-img'><img src='animated-balloon.gif'></div>");//if user input equals calculation then appends sticker
+                  $('#sticker').append("<div class='sticker-img'><img src='car.jpg' width='120' height='120'></div>");
                   document.querySelector('#airhorn').play();
                   $("#check").attr("disabled", true); 
                   } else $("#check").attr("disabled", true);  
