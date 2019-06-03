@@ -16,49 +16,41 @@
         <!-- JQuery CDN -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!-- End JQuery CDN -->
+        <!-- Custom CSS -->
         <link rel="stylesheet" type="text/css" href="main.css">
 
     </head>
-    <body> 
+    <body>
+      
         <!-- heading section-->
-        <div class="flex-container">  
-            <h2> Puzzles! Start Playing now!</h2>
+        <div class="d-flex justify-content-center m-3">  
+            <h2 class="text-center"> Puzzles! Start Playing now!</h2>
         </div>
         <!-- Section where stickers appear -->
           <div id="sticker">
             <h3>How many stickers can you get?</h3>
+            <audio id="airhorn" src="airhorn.mp3" autoplay="false"></audio>
           </div>
-          <audio id="airhorn" src="airhorn.mp3" autoplay="false"></audio>
+          
      
           
         <!-- Inputs and events -->
 
-       <!--  <div class="container">
+        <div class="flex-container px-4">
           <div class="row align-items-center">
               <div class="col" id="no1"></div>
               <div class="col">+</div>
               <div class="col" id="no2"></div>
               <div class="col">=</div>
-              <div class="col"><input type="number" id="numinput" name="display"></input></div>
-              <div class="col" id="no3">And the answer is...</div>
-              <div class="col"><button id="check" disabled="true">Check</button></div>
+              <div class="col form-inline"><input type="number" class="form-control" id="numinput" name="display"></input></div>
+              <div class="col h4" id="no3">The answer is...</div>
+              <div class="col"><button type="button" class="btn btn-warning btn-md" id="check" disabled="true">Check</button></div>
+              <div class="col"><button type="button" class="btn btn-primary btn-md" onClick="tryAnother()">Try another</button></div>
           </div>       
-        </div> -->
-        <div class="flex-container">
-          <table class="table table-borderless">
-            <tr>
-              <td id="no1" colspan="2"></td>
-              <td colspan="2">+</td>
-              <td id="no2" colspan="2">5</td>
-              <td colspan="2">=</td>
-              <td><input type="number" id="numinput" name="display"></input></td>
-              <td id ="no3">And the answer is..</td>
-              <td colspan="2"><button id="check" disabled="true">Check</button></td>
-            </tr>
-          </table>        
         </div>
-        <!-- button event to refresh -->
-        <button><a onClick="tryAnother()">Try another</a></button>
+ 
+        
+
 
         <script>
           // sets the two numbers for addition using random method 
@@ -89,7 +81,6 @@
                 $("#no3").css('font-size','1em');
                 if($('#numinput').val()*1 == document.querySelector("#no3").innerHTML*1){ //checks user input vs sum of the two numbers calculated
                   $('h3').remove();
-                  // $('#sticker').append("<div class='sticker-img'><img src='animated-balloon.gif'></div>");//if user input equals calculation then appends sticker
                   $('#sticker').append("<div class='sticker-img'><img src='car.jpg' width='120' height='120'></div>");
                   document.querySelector('#airhorn').play();
                   $("#check").attr("disabled", true); 

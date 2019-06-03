@@ -8,25 +8,29 @@
     }
   body {
       margin: auto;
-      font-size: 1em;
+      font-size: 3rem;
+     
     }
 
-  .flex-container {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  padding: 20px 20px;
-  }
 
   #sticker{
     /*border: 1px solid black;*/
-    height: 300px;
-   
+    height: 150px;   
   background-color: #eee;
-  /*white-space: nowrap;*/
   width: 100%;
   display: table;
+  margin-bottom: 20px;
   }
+
+  #add-row{
+    /*border: 1px solid black;*/
+  height: 150px;   
+  background-color: #eee;
+  width: 100%;
+  margin-bottom: 20px;
+  }
+
+
   h3{
     vertical-align: middle;
   display: table-cell;
@@ -35,87 +39,29 @@
   
 
   .sticker-img{
-  vertical-align: middle;
   display: table-cell;
-  padding: 0 13px;
+  padding: 20px;
   }
 
   .sticker-img img {
   max-width: 100%;
 }
 
-/*   #no1{
-    color: red;
-    font-size: 2em;
-   }
-   
-   #no2{
-    color: blue;
-    font-size: 2em;
-   }
-
-   input{
- 
-    border-color: red;
-    font-size: 2em;
-   }
-
-   #no3{
- 
-    
-    font-size: 1em;
-    text-align: center;
-    vertical-align: middle;
-   }
-
-   #check{
-  
-    background-color: orange;
-    font-size: 2em;
-}
-*/
-   table{
-    font-size: 5em;
-    
-   }
-  
    #no1{
     color: red;
-   }
-   #no2{
-    color: blue;
-   }
-   input{
-    width: 200px;
-    height: 100px;
-    border-color: red;
-   }
-   #no3{
-    width: 200px;
-    height: 100px;
-    
-    font-size: 0.25em;
-    text-align: center;
-    vertical-align: middle;
-   }
-   #check{
-    width: 200px;
-    height: 100px;
-    background-color: orange;
-    font-size: 0.5em;
-
-   }
-   button{
-    margin: 20px;
-    padding: 20px;
-    align-self: center;
-    
-   }
-   a{
-    font-size: 3em;
-    background-color: hotpink;
-    font-color: white;
-    /*margin: 20px 20px;*/
-    padding: 10px 10px;
    
    }
+   
+   #no2{
+    color: blue;
+  
+   }
+
+  input{
+    width: 100px !important;
+  }
+
+  .btn{
+    width:100%;
+  }
+
