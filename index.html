@@ -24,7 +24,7 @@
       
         <!-- heading section-->
         <div class="d-flex justify-content-center m-3">  
-            <h2 class="text-center"> Puzzles! Start Playing now!</h2>
+            <h2 class="text-center"> Hello! Start Playing now!</h2>
         </div>
 
         <!-- Section where stickers appear -->
@@ -36,6 +36,10 @@
         <!-- Inputs and events -->
 
         <div class="container px-4">
+
+          <div class="row justify-content-center" style="color:blueviolet">Add</div>
+          <br>
+
           <div class="row align-items-center">
               <div class="col" id="no1"></div>
               <div class="col">+</div>
@@ -45,33 +49,76 @@
               <div class="col h4 text-center" id="no3">The answer is...</div>
               <button type="button" class="col btn btn-warning btn-md m-4" id="check" disabled="true">Check</button>
               <button type="button" class="col btn btn-primary btn-md" onClick="tryAnother()">Try another</button>
-          </div>       
+          </div>
+
+          <br>
+          <br>
+
+          <div class="row justify-content-center" style="color:rgb(226, 162, 43)">Subtract</div>
+          <br>
+
+          <div class="row align-items-center">
+            <div class="col" id="no4"></div>
+            <div class="col">-</div>
+            <div class="col" id="no5"></div>
+            <div class="col">=</div>
+            <input class="col " type="number" id="numinput2" name="display"></input>
+            <div class="col h4 text-center" id="no6">The answer is...</div>
+            <button type="button" class="col btn btn-warning btn-md m-4" id="check2" disabled="true">Check</button>
+            <button type="button" class="col btn btn-primary btn-md" onClick="tryAnother()">Try another</button>
+        </div> 
+
         </div>
  
         
 
 
         <script>
+          //function to return random numbers within a range
+          function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+          }
+
           // sets the two numbers for addition using random method 
-          document.querySelector("#no1").innerHTML = Math.floor(Math.random() * 9) + 1;
+          document.querySelector("#no1").innerHTML = getRandomInt(1,20);
           var no1 = document.querySelector("#no1").innerHTML;
-          document.querySelector("#no2").innerHTML = Math.floor(Math.random() * 9) + 1;
+          document.querySelector("#no2").innerHTML = getRandomInt(1,10);
           var no2 = document.querySelector("#no2").innerHTML;
+          
+          // sets the two numbers for subtraction using random method 
+          document.querySelector("#no4").innerHTML = getRandomInt(10,20);
+          var no4 = document.querySelector("#no4").innerHTML;
+          document.querySelector("#no5").innerHTML = getRandomInt(0,10);;
+          var no5 = document.querySelector("#no5").innerHTML;
 
           // resets the numbers for addition using random method
           function tryAnother(){
+            //Addition resets
             $("#check").attr("disabled", true);  
             $("#no3").css('font-size','0.5em');
-            document.getElementById("no1").innerHTML = Math.floor(Math.random() * 9) + 1;
+            document.querySelector("#no1").innerHTML = getRandomInt(1,20);
             no1 = document.getElementById("no1").innerHTML;
-            document.getElementById("no2").innerHTML = Math.floor(Math.random() * 9) + 1;
+            document.getElementById("no2").innerHTML = getRandomInt(1,10);;
             no2 = document.getElementById("no2").innerHTML;
             document.querySelector('#numinput').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
             document.querySelector('#no3').innerHTML = "And the answer is..";
+            
+            //Subtraction resets
+            $("#check2").attr("disabled", true);  
+            $("#no6").css('font-size','0.5em');
+            document.querySelector("#no4").innerHTML = getRandomInt(10,20);
+            no4 = document.getElementById("no4").innerHTML;
+            document.getElementById("no5").innerHTML = getRandomInt(1,10);;
+            no5 = document.getElementById("no5").innerHTML;
+            document.querySelector('#numinput2').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
+            document.querySelector('#no6').innerHTML = "And the answer is..";
+          };
 
-              };
             //event handler functions
-          $(document).ready(function(){ //jQuery 
+          $(document).ready(function(){ //jQuery
+          //Addition event handlers 
               $('#numinput').keypress(function(){
                 $("#check").attr("disabled", false); //activate check button only after input box has input
               })
@@ -84,8 +131,23 @@
                   document.querySelector('#airhorn').play();
                   $("#check").attr("disabled", true); 
                   } else $("#check").attr("disabled", true);  
-                
-            });        
+            }); 
+
+            //Subtraction event handlers
+            $('#numinput2').keypress(function(){
+                $("#check2").attr("disabled", false); //activate check button only after input box has input
+              })
+              $("#check2").click(function(){ //checking using check button 
+                document.querySelector("#no6").innerHTML = no4*1 - no5*1; //subtracts the two numbers and prints result
+                $("#no6").css('font-size','1em');
+                if($('#numinput2').val()*1 == document.querySelector("#no6").innerHTML*1){ //checks user input vs subtraction of the two numbers calculated
+                  $('h3').remove();
+                  $('#sticker').append("<div class='sticker-img'><img src='car.jpg' width='120' height='120'></div>");
+                  document.querySelector('#airhorn').play();
+                  $("#check2").attr("disabled", true); 
+                  } else $("#check2").attr("disabled", true);  
+            }); 
+
           });
 
              
