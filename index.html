@@ -37,7 +37,7 @@
 
         <div class="container px-4">
 
-          <!-- <div class="row justify-content-center" style="color:blueviolet">Add</div>
+          <div class="row justify-content-center" style="color:blueviolet">Add</div>
           <br>
 
           <div class="row align-items-center">
@@ -52,7 +52,7 @@
           </div>
 
           <br>
-          <br> -->
+          <br>
 
           <div class="row justify-content-center" style="color:rgb(226, 162, 43)">Subtract</div>
           <br>
@@ -84,11 +84,11 @@
             return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
           }
 
-          // // sets the two numbers for addition using random method 
-          // document.querySelector("#no1").innerHTML = getRandomInt(1,20);
-          // var no1 = document.querySelector("#no1").innerHTML;
-          // document.querySelector("#no2").innerHTML = getRandomInt(1,10);
-          // var no2 = document.querySelector("#no2").innerHTML;
+          // sets the two numbers for addition using random method 
+          document.querySelector("#no1").innerHTML = getRandomInt(1,20);
+          var no1 = document.querySelector("#no1").innerHTML;
+          document.querySelector("#no2").innerHTML = getRandomInt(1,10);
+          var no2 = document.querySelector("#no2").innerHTML;
           
           // sets the two numbers for subtraction using random method 
           document.querySelector("#no4").innerHTML = getRandomInt(10,20);
@@ -99,14 +99,14 @@
           // resets the numbers for addition using random method
           function tryAnother(){
             // //Addition resets
-            // $("#check").attr("disabled", true);  
-            // $("#no3").css('font-size','0.5em');
-            // document.querySelector("#no1").innerHTML = getRandomInt(1,20);
-            // no1 = document.getElementById("no1").innerHTML;
-            // document.getElementById("no2").innerHTML = getRandomInt(1,10);;
-            // no2 = document.getElementById("no2").innerHTML;
-            // document.querySelector('#numinput').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
-            // document.querySelector('#no3').innerHTML = "And the answer is..";
+            $("#check").attr("disabled", true);  
+            $("#no3").css('font-size','0.5em');
+            document.querySelector("#no1").innerHTML = getRandomInt(1,20);
+            no1 = document.getElementById("no1").innerHTML;
+            document.getElementById("no2").innerHTML = getRandomInt(1,10);;
+            no2 = document.getElementById("no2").innerHTML;
+            document.querySelector('#numinput').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
+            document.querySelector('#no3').innerHTML = "And the answer is..";
             
             //Subtraction resets
             $("#check2").attr("disabled", true);  
@@ -121,20 +121,20 @@
 
             //event handler functions
           $(document).ready(function(){ //jQuery
-          // //Addition event handlers 
-          //     $('#numinput').keypress(function(){
-          //       $("#check").attr("disabled", false); //activate check button only after input box has input
-          //     })
-          //     $("#check").click(function(){ //checking using check button 
-          //       document.querySelector("#no3").innerHTML = no1*1 + no2*1; //adds the two numbers and prints result
-          //       $("#no3").css('font-size','1em');
-          //       if($('#numinput').val()*1 == document.querySelector("#no3").innerHTML*1){ //checks user input vs sum of the two numbers calculated
-          //         $('h3').remove();
-          //         $('#sticker').append("<div class='sticker-img'><img src='car.jpg' width='120' height='120'></div>");
-          //         document.querySelector('#airhorn').play();
-          //         $("#check").attr("disabled", true); 
-          //         } else $("#check").attr("disabled", true);  
-          //   }); 
+          //Addition event handlers 
+              $('#numinput').keypress(function(){
+                $("#check").attr("disabled", false); //activate check button only after input box has input
+              })
+              $("#check").click(function(){ //checking using check button 
+                document.querySelector("#no3").innerHTML = no1*1 + no2*1; //adds the two numbers and prints result
+                $("#no3").css('font-size','1em');
+                if($('#numinput').val()*1 == document.querySelector("#no3").innerHTML*1){ //checks user input vs sum of the two numbers calculated
+                  $('h3').remove();
+                  $('#sticker').append("<div class='sticker-img'><img src='car.jpg' width='120' height='120'></div>");
+                  document.querySelector('#airhorn').play();
+                  $("#check").attr("disabled", true); 
+                  } else $("#check").attr("disabled", true);  
+            }); 
 
             //Subtraction event handlers
             $('#numinput2').keypress(function(){
