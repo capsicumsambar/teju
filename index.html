@@ -30,7 +30,7 @@
         <!-- Section where stickers appear -->
           <div id="sticker">
             <h3>How many stickers can you get?</h3>
-            <audio id="airhorn" src="airhorn.mp3" autoplay="false"></audio>
+            <audio id="airhorn" src="wildkratts.m4a" autoplay="false"></audio>
           </div>    
           
         <!-- Inputs and events -->
@@ -85,15 +85,15 @@
           }
 
           // sets the two numbers for addition using random method 
-          document.querySelector("#no1").innerHTML = getRandomInt(1,20);
+          document.querySelector("#no1").innerHTML = getRandomInt(10,15);
           var no1 = document.querySelector("#no1").innerHTML;
-          document.querySelector("#no2").innerHTML = getRandomInt(1,10);
+          document.querySelector("#no2").innerHTML = getRandomInt(20,25);
           var no2 = document.querySelector("#no2").innerHTML;
           
           // sets the two numbers for subtraction using random method 
-          document.querySelector("#no4").innerHTML = getRandomInt(10,20);
+          document.querySelector("#no4").innerHTML = getRandomInt(25,30);
           var no4 = document.querySelector("#no4").innerHTML;
-          document.querySelector("#no5").innerHTML = getRandomInt(0,10);;
+          document.querySelector("#no5").innerHTML = getRandomInt(10,14);;
           var no5 = document.querySelector("#no5").innerHTML;
 
           // resets the numbers for addition using random method
@@ -101,9 +101,9 @@
             // //Addition resets
             $("#check").attr("disabled", true);  
             $("#no3").css('font-size','0.5em');
-            document.querySelector("#no1").innerHTML = getRandomInt(1,20);
+            document.querySelector("#no1").innerHTML = getRandomInt(10,15);
             no1 = document.getElementById("no1").innerHTML;
-            document.getElementById("no2").innerHTML = getRandomInt(1,10);;
+            document.getElementById("no2").innerHTML = getRandomInt(20,25);;
             no2 = document.getElementById("no2").innerHTML;
             document.querySelector('#numinput').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
             document.querySelector('#no3').innerHTML = "And the answer is..";
@@ -111,9 +111,9 @@
             //Subtraction resets
             $("#check2").attr("disabled", true);  
             $("#no6").css('font-size','0.5em');
-            document.querySelector("#no4").innerHTML = getRandomInt(10,20);
+            document.querySelector("#no4").innerHTML = getRandomInt(25,30);
             no4 = document.getElementById("no4").innerHTML;
-            document.getElementById("no5").innerHTML = getRandomInt(1,10);;
+            document.getElementById("no5").innerHTML = getRandomInt(10,14);;
             no5 = document.getElementById("no5").innerHTML;
             document.querySelector('#numinput2').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
             document.querySelector('#no6').innerHTML = "And the answer is..";
@@ -130,7 +130,7 @@
                 $("#no3").css('font-size','1em');
                 if($('#numinput').val()*1 == document.querySelector("#no3").innerHTML*1){ //checks user input vs sum of the two numbers calculated
                   $('h3').remove();
-                  $('#sticker').append("<div class='sticker-img'><img src='car.jpg' width='120' height='120'></div>");
+                  $('#sticker').append("<div class='sticker-img'><img src='wildkratts.jpg' width='120' height='120'></div>");
                   document.querySelector('#airhorn').play();
                   $("#check").attr("disabled", true); 
                   } else $("#check").attr("disabled", true);  
@@ -145,7 +145,7 @@
                 $("#no6").css('font-size','1em');
                 if($('#numinput2').val()*1 == document.querySelector("#no6").innerHTML*1){ //checks user input vs subtraction of the two numbers calculated
                   $('h3').remove();
-                  $('#sticker').append("<div class='sticker-img'><img src='car.jpg' width='120' height='120'></div>");
+                  $('#sticker').append("<div class='sticker-img'><img src='wildkratts.jpg' width='120' height='120'></div>");
                   document.querySelector('#airhorn').play();
                   $("#check2").attr("disabled", true); 
                   } else $("#check2").attr("disabled", true);  
