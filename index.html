@@ -46,7 +46,7 @@
               <div class="col" id="no2"></div>
               <div class="col">=</div>
               <input class="col " type="number" id="numinput" name="display"></input>
-              <div class="col h4 text-center" id="no3">The answer is...</div>
+              <div class="col h4 text-center" id="no3">Let's see if you are right</div>
               <button type="button" class="col btn btn-warning btn-md m-4" id="check" disabled="true">Check</button>
               <button type="button" class="col btn btn-primary btn-md" onClick="tryAnother()">Try another</button>
           </div>
@@ -63,7 +63,7 @@
             <div class="col" id="no5"></div>
             <div class="col">=</div>
             <input class="col " type="number" id="numinput2" name="display"></input>
-            <div class="col h4 text-center" id="no6">The answer is...</div>
+            <div class="col h4 text-center" id="no6">Let's see if you are right</div>
             <button type="button" class="col btn btn-warning btn-md m-4" id="check2" disabled="true">Check</button>
             <button type="button" class="col btn btn-primary btn-md" onClick="tryAnother()">Try another</button>
           </div> 
@@ -106,7 +106,7 @@
             document.getElementById("no2").innerHTML = getRandomInt(20,25);;
             no2 = document.getElementById("no2").innerHTML;
             document.querySelector('#numinput').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
-            document.querySelector('#no3').innerHTML = "And the answer is..";
+            document.querySelector('#no3').innerHTML = "Let's see if you are right";
             
             //Subtraction resets
             $("#check2").attr("disabled", true);  
@@ -116,7 +116,7 @@
             document.getElementById("no5").innerHTML = getRandomInt(10,14);;
             no5 = document.getElementById("no5").innerHTML;
             document.querySelector('#numinput2').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
-            document.querySelector('#no6').innerHTML = "And the answer is..";
+            document.querySelector('#no6').innerHTML = "Let's see if you are right";
           };
 
             //event handler functions
@@ -126,9 +126,11 @@
                 $("#check").attr("disabled", false); //activate check button only after input box has input
               })
               $("#check").click(function(){ //checking using check button 
-                document.querySelector("#no3").innerHTML = no1*1 + no2*1; //adds the two numbers and prints result
-                $("#no3").css('font-size','1em');
-                if($('#numinput').val()*1 == document.querySelector("#no3").innerHTML*1){ //checks user input vs sum of the two numbers calculated
+                if($('#numinput').val()*1 == no1*1 + no2*1){ //checks user input and displays apporpriate message
+                  document.querySelector("#no3").innerHTML = "Correct!"                  
+                } else document.querySelector("#no3").innerHTML = "Try again!" 
+                $("#no3").css('font-size','0.5em');
+                if($('#numinput').val()*1 == no1*1 + no2*1){ //checks user input vs sum of the two numbers calculated
                   $('h3').remove();
                   $('#sticker').append("<div class='sticker-img'><img src='wildkratts.jpg' width='120' height='120'></div>");
                   document.querySelector('#airhorn').play();
@@ -140,10 +142,12 @@
             $('#numinput2').keypress(function(){
                 $("#check2").attr("disabled", false); //activate check button only after input box has input
               })
-              $("#check2").click(function(){ //checking using check button 
-                document.querySelector("#no6").innerHTML = no4*1 - no5*1; //subtracts the two numbers and prints result
-                $("#no6").css('font-size','1em');
-                if($('#numinput2').val()*1 == document.querySelector("#no6").innerHTML*1){ //checks user input vs subtraction of the two numbers calculated
+              $("#check2").click(function(){ //checking using check button
+                if($('#numinput2').val()*1 == no4*1 - no5*1){ //checks user input and displays apporpriate message 
+                  document.querySelector("#no6").innerHTML = "Correct!";
+                } else document.querySelector("#no6").innerHTML = "Try again!" 
+                $("#no6").css('font-size','0.5em');
+                if($('#numinput2').val()*1 == no4*1 - no5*1){ //checks user input vs subtraction of the two numbers calculated
                   $('h3').remove();
                   $('#sticker').append("<div class='sticker-img'><img src='wildkratts.jpg' width='120' height='120'></div>");
                   document.querySelector('#airhorn').play();
