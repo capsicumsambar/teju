@@ -24,8 +24,13 @@
       
         <!-- heading section-->
         <div class="d-flex justify-content-center m-3">  
-            <h2 class="text-center"> Hello! Start Playing now!</h2>
+            <h2 class="text-center"> Hello! Play Math below!</h2>
         </div>
+        <div class="d-flex justify-content-center m-3">
+            <h2 class="text-center"> or play <a href=sight.html>Sight Words</a></h2>
+        </div>
+        
+
 
         <!-- Section where stickers appear -->
           <div id="sticker">
@@ -37,6 +42,7 @@
 
         <div class="container px-4">
 
+          <!-- Addition row -->
           <div class="row justify-content-center" style="color:blueviolet">Add</div>
           <br>
 
@@ -54,6 +60,7 @@
           <br>
           <br>
 
+          <!-- Subtraction row -->
           <div class="row justify-content-center" style="color:rgb(226, 162, 43)">Subtract</div>
           <br>
 
@@ -69,12 +76,6 @@
           </div> 
           <br>
           <br>
-          
-
-        </div>
- 
-        
-
 
         <script>
           //function to return random numbers within a range
@@ -85,9 +86,9 @@
           }
 
           // sets the two numbers for addition using random method 
-          document.querySelector("#no1").innerHTML = getRandomInt(10,15);
+          document.querySelector("#no1").innerHTML = getRandomInt(15,20);
           var no1 = document.querySelector("#no1").innerHTML;
-          document.querySelector("#no2").innerHTML = getRandomInt(20,25);
+          document.querySelector("#no2").innerHTML = getRandomInt(25,30);
           var no2 = document.querySelector("#no2").innerHTML;
           
           // sets the two numbers for subtraction using random method 
@@ -101,9 +102,9 @@
             // //Addition resets
             $("#check").attr("disabled", true);  
             $("#no3").css('font-size','0.5em');
-            document.querySelector("#no1").innerHTML = getRandomInt(10,15);
+            document.querySelector("#no1").innerHTML = getRandomInt(15,20);
             no1 = document.getElementById("no1").innerHTML;
-            document.getElementById("no2").innerHTML = getRandomInt(20,25);;
+            document.getElementById("no2").innerHTML = getRandomInt(25,30);;
             no2 = document.getElementById("no2").innerHTML;
             document.querySelector('#numinput').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
             document.querySelector('#no3').innerHTML = "Let's see if you are right";
