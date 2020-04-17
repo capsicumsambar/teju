@@ -7,6 +7,16 @@
 // speechRecognitionList.addFromString(grammar2, 1);
 // recognition.grammars = speechRecognitionList;// need to understand grammar
 
+// enabling enter key for word input
+var input = document.getElementsByClassName("wordInput");
+for(let i=0; i<input.length;i++){
+  input[i].addEventListener("keyup", function(event) {
+    if(event.keyCode === 13) {
+      event.preventDefault();
+      document.getElementById("add").click();
+      }
+    })
+  }
 // addRow is used for adding new words to the sight words box
 function addRow() { 
   var table = document.getElementById("table");
@@ -17,9 +27,9 @@ function addRow() {
   var td2 = document.createElement("td");
   var td3 = document.createElement("td");    
 
-  td1.innerHTML = document.getElementById("word1").value;
-  td2.innerHTML  = document.getElementById("word2").value;
-  td3.innerHTML  = document.getElementById("word3").value;
+  td1.innerHTML = document.getElementById("word1").value.toLowerCase();
+  td2.innerHTML  = document.getElementById("word2").value.toLowerCase();
+  td3.innerHTML  = document.getElementById("word3").value.toLowerCase();
 
   row.appendChild(td1);
   row.appendChild(td2);
@@ -64,7 +74,7 @@ recognition.onresult = function(event) {
       sightTableArray.push(x.rows[i].cells[j].innerHTML)
     }
   }
-  sightTableArray = sightTableArray.map(e1 => e1.trim())
+  sightTableArray = sightTableArray.map(e1 => e1.trim()) //ensures words entered are deleted of leading spaces 
   // array of sight words created above
 
   var wordSpoke = event.results[0][0].transcript; //capture spoken word using webspeech API 
