@@ -22,28 +22,39 @@
     </head>
     <body>
         <!-- Header -->
-        <div class="d-flex justify-content-center m-3">  
-                <h2 class="text-center"> Hello! Play Sight Words below!</h2>
-            </div>
-            <div class="d-flex justify-content-center m-3">
-                <h2 class="text-center"> or play <a href=index.html>Math games</a></h2>
-        </div>
-
-        <!-- Section where stickers appear -->
-        <div id="sticker">
-            <h3>How many stickers can you get?</h3>
-            <audio id="airhorn" src="wildkratts.m4a" autoplay="false"></audio>
-        </div>
-
         <div class="container px-4">
-            <div class="row w-50 mx-auto">
-                <button id='sightbutton' style="background-color:orange">Click this button to activate microphone and speak a word from below</button>
+            <br>
+            <div class="row">
+                <div class="col-sm-5 px-4"><h2 >Is your child a fan of words?</h2></div>
+                
+                <div class="col-sm-7 px-4"><h2>Play sight words and earn digital stickers!</h2></div>
             </div>
+            <br>
+        </div>
+  
+        <!-- Section where stickers appear -->
+        <div class="container px-4">
+            <div id="sticker" class="p-3 text-center">
+                <h5>Click the red mic and ask your child to read one word at a time from the box below</h5>
+                <h6>(Request your child to speak the word normally, it can take some getting used to speaking to a computer mic)</h6>
+                <h5>Add more words (3 at a time)</h5>
+                <h5>Each word spoken right will earn a digital sticker on this gray box</h5>
+                <!-- <audio id="airhorn" src="wildkratts.m4a" autoplay="false"></audio> -->
+            </div>
+        </div>
+
+        <div class="container px-4 w-25 mx-auto ">
+            <!-- <div class="row w-50 mx-auto"> -->
+                <!-- <button id='sightbutton' style="background-color:orange">Click this button to activate microphone and speak a word from below</button> -->
+                <img src="mic2.jpg" id='sightbutton' width='120' height='120' />
+            <!-- </div> -->
+        </div>
+        <div class="container px-4">
             <div class="row align-items-center">
-                <p class="output" style="color:violet"><em>[Your spoken word will be shown here]</em></p>
+                <p class="output" style="color:violet"><em>[The spoken word will be shown here]</em></p>
             </div>
 
-            <div class="row w-50 mx-auto">
+            <div class="row w-25 mx-auto">
                 <table id="table" border="1">
                     <tr>
                         <td>here</td>
@@ -52,25 +63,27 @@
                     </tr>
                 </table>
             </div>
-            
-            <div class="row w-50 mx-auto">
+            <br>
+            <div class="row w-25 mx-auto">
+                
                 <p>Add more words:</p>
             </div>
             
-            <div class="row w-50 mx-auto">
+            <div class="row w-75 mx-auto">
                <div class="col-sm-4"> <input type="text" name="word1" id="word1" /></div>              
                <div class="col-sm-4"> <input type="text" name="word2" id="word2" /> </div>              
                 <div class="col-sm-4"> <input type="text" name="word3" id="word3" /> </div>
             </div>
             <p></p>
-            
-            <div class="row w-50 mx-auto">
+            <br>
+            <div class="row w-25 mx-auto">
                 <button style="background-color:rgb(30, 255, 0)" onclick="addRow()" id="add">
                     Add the words above
                 </button>
             </div>
             <br/>
-             
+            <br>
+            <br>
         </div>
         <script src="sight.js"></script>
     </body>

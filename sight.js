@@ -46,7 +46,7 @@ recognition.maxAlternatives = 1;
 var diagnostic = document.querySelector('.output'); 
 var table = document.getElementById("table");// redeclaring as above table declaration is local
 
-// word spoken event is fired after clicking sightbutton is clicked
+// word spoken event is fired after sightbutton is clicked
 sightbutton.onclick = function() {
   recognition.start();
   console.log('Ready to receive a word command.');
@@ -75,8 +75,9 @@ recognition.onresult = function(event) {
         if(table.rows[i].cells[j].innerHTML == wordSpoke)table.rows[i].cells[j].style.backgroundColor = "orange"
       }
     }
-    $('h3').remove();
-    $('#sticker').append("<div class='sticker-img'><img src='wildkratts.jpg' width='120' height='120'></div>");
+    $('h5').remove();
+    $('h6').remove();
+    $('#sticker').append("<div class='sticker-img'><img src='stallion.jpg' width='120' height='120'></div>");
     // document.querySelector('#airhorn').play();
   };
   console.log(sightTableArray)
