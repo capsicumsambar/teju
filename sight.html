@@ -17,7 +17,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!-- End JQuery CDN -->
         <!-- Custom CSS -->
-        <link rel="stylesheet" type="text/css" href="main.css">
+        <link rel="stylesheet" type="text/css" href="sight.css">
 
     </head>
     <body>
@@ -36,19 +36,41 @@
         </div>
 
         <div class="container px-4">
+            <div class="row w-50 mx-auto">
+                <button id='sightbutton' style="background-color:orange">Click this button to activate microphone and speak a word from below</button>
+            </div>
             <div class="row align-items-center">
                 <p class="output" style="color:violet"><em>[Your spoken word will be shown here]</em></p>
             </div>
-            <div class="row algn-items-center">
-                <p style="color:orange">Tap/click a word from below and speak the word</p>
+
+            <div class="row w-50 mx-auto">
+                <table id="table" border="1">
+                    <tr>
+                        <td>here</td>
+                        <td>what</td>
+                        <td>look</td>
+                    </tr>
+                </table>
             </div>
-            <div class="row align-items-center">
-                <p class="hints1"></p>
+            
+            <div class="row w-50 mx-auto">
+                <p>Add more words:</p>
             </div>
-            <div class="row align-items-center">
-                    <p class="hints2"></p>
+            
+            <div class="row w-50 mx-auto">
+               <div class="col-sm-4"> <input type="text" name="word1" id="word1" /></div>              
+               <div class="col-sm-4"> <input type="text" name="word2" id="word2" /> </div>              
+                <div class="col-sm-4"> <input type="text" name="word3" id="word3" /> </div>
             </div>
-          
+            <p></p>
+            
+            <div class="row w-50 mx-auto">
+                <button style="background-color:rgb(30, 255, 0)" onclick="addRow()" id="add">
+                    Add the words above
+                </button>
+            </div>
+            <br/>
+             
         </div>
         <script src="sight.js"></script>
     </body>

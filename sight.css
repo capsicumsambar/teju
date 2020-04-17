@@ -1,0 +1,54 @@
+  
+  * {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            /* border:1px solid blue; */
+
+  }
+body {
+    margin: auto;
+    font-size: 1rem;
+    /* border:1px solid blue; */
+   
+  }
+
+
+#sticker{
+  /*border: 1px solid black;*/
+  height: 150px;   
+background-color: #eee;
+width: 100%;
+display: table;
+margin-bottom: 20px;
+}
+
+
+
+h3{
+  vertical-align: middle;
+display: table-cell;
+text-align: center;
+}
+
+
+.sticker-img{
+display: table-cell;
+padding: 20px;
+}
+
+.sticker-img img {
+max-width: 100%;
+}
+
+#table td{
+    padding: 10px;
+  }
+
+  input{
+      width: 200px;
+  }
+
+  #table{
+      background-color: aquamarine;
+  }

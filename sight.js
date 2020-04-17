@@ -1,58 +1,85 @@
 // Adapted from https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
+// var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
+// var grammar1 = '#JSGF V1.0; grammar words; public <color> = ' + words1.join(' | ') + ' ;' //need to understand grammar
+// var grammar2 = '#JSGF V1.0; grammar words; public <color> = ' + words2.join(' | ') + ' ;'
+// var speechRecognitionList = new SpeechGrammarList();// need to understand grammar, see https://github.com/WICG/speech-api/issues/57
+// speechRecognitionList.addFromString(grammar1, 1);// need to understand grammar
+// speechRecognitionList.addFromString(grammar2, 1);
+// recognition.grammars = speechRecognitionList;// need to understand grammar
+
+// addRow is used for adding new words to the sight words box
+function addRow() { 
+  var table = document.getElementById("table");
+  
+  var row= document.createElement("tr");
+  console.log(row);
+  var td1 = document.createElement("td");
+  var td2 = document.createElement("td");
+  var td3 = document.createElement("td");    
+
+  td1.innerHTML = document.getElementById("word1").value;
+  td2.innerHTML  = document.getElementById("word2").value;
+  td3.innerHTML  = document.getElementById("word3").value;
+
+  row.appendChild(td1);
+  row.appendChild(td2);
+  row.appendChild(td3);
+
+  table.children[0].appendChild(row);
+  document.getElementById("word1").value = " ";
+  document.getElementById("word2").value = " ";
+  document.getElementById("word3").value = " "
+};
+//end of addRow
+
+//Use webspeech API: https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition
-var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList
 var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent
-
-var words1 = ['this','down','big','come','what','look'];
-var words2 = ['you','have','like','here','small','big']
-var grammar1 = '#JSGF V1.0; grammar words; public <color> = ' + words1.join(' | ') + ' ;'
-var grammar2 = '#JSGF V1.0; grammar words; public <color> = ' + words2.join(' | ') + ' ;'
-
 var recognition = new SpeechRecognition();
-var speechRecognitionList = new SpeechGrammarList();
-speechRecognitionList.addFromString(grammar1, 1);
-speechRecognitionList.addFromString(grammar2, 1);
-recognition.grammars = speechRecognitionList;
+
 recognition.continuous = false;
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 recognition.maxAlternatives = 1;
+//end of objects creation for webspeech
 
-var diagnostic = document.querySelector('.output');
-var bg = document.querySelector('html');
-var hints1 = document.querySelector('.hints1');
-var hints2 = document.querySelector('.hints2');
+var diagnostic = document.querySelector('.output'); 
+var table = document.getElementById("table");// redeclaring as above table declaration is local
 
-var words1HTML= '';
-var count1=1;
-words1.forEach(function(v, i, a){
-  console.log(v, i);
-  words1HTML += '  '+ count1+ ')' + v ;
-  count1++;
-});
-hints1.innerHTML = '<span style="color:blue">' + words1HTML + '</span>' + '<br>';
-
-var words2HTML= '';
-words2.forEach(function(v, i, a){
-  console.log(v, i);
-  words2HTML += '  '+ count1+ ')' + v ;
-  count1++;
-});
-hints2.innerHTML = '<span style="color:blue">' + words2HTML + '</span>' + '<br>';
-
-document.body.onclick = function() {
+// word spoken event is fired after clicking sightbutton is clicked
+sightbutton.onclick = function() {
   recognition.start();
   console.log('Ready to receive a word command.');
 }
 
-recognition.onresult = function(event) {
-  var wordSpoke = event.results[0][0].transcript;
-  diagnostic.textContent = 'You spoke: ' +  wordSpoke + '.';
-  if(words1.includes(wordSpoke) || words2.includes(wordSpoke)){
+//function for showing results of spoken words
+recognition.onresult = function(event) { 
+  // coverting HTML table to JS array to check if spoken word is in the sight table box
+  var sightTableArray = [];
+  var x = document.getElementById("table");
+  var noofRows = x.rows.length;
+  var noofCols = x.rows[0].cells.length;
+  for(let i=0; i<noofRows; i++){
+    for(let j=0;j<noofCols; j++){
+      sightTableArray.push(x.rows[i].cells[j].innerHTML)
+    }
+  }
+  sightTableArray = sightTableArray.map(e1 => e1.trim())
+  // array of sight words created above
+
+  var wordSpoke = event.results[0][0].transcript; //capture spoken word using webspeech API 
+  diagnostic.innerHTML = 'You spoke: ' +  '<span style="color:red">' + wordSpoke + '</span>';
+  if(sightTableArray.includes(wordSpoke)){
+    for(let i=0; i<noofRows; i++){
+      for(let j=0;j<noofCols; j++){
+        if(table.rows[i].cells[j].innerHTML == wordSpoke)table.rows[i].cells[j].style.backgroundColor = "orange"
+      }
+    }
     $('h3').remove();
     $('#sticker').append("<div class='sticker-img'><img src='wildkratts.jpg' width='120' height='120'></div>");
-    document.querySelector('#airhorn').play();
+    // document.querySelector('#airhorn').play();
   };
+  console.log(sightTableArray)
   console.log('Confidence: ' + event.results[0][0].confidence);
 }
 
