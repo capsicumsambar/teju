@@ -10,6 +10,7 @@ body {
     margin: auto;
     font-size: 1rem;
     /* border:1px solid blue; */
+    background-color: rgb(240, 177, 6);
    
   }
 
@@ -17,7 +18,7 @@ body {
 #sticker{
   /*border: 1px solid black;*/
   height: 150px;   
-background-color: #eee;
+background-color: rgb(175, 212, 201);
 width: 100%;
 display: table;
 margin-bottom: 20px;
@@ -50,5 +51,5 @@ max-width: 100%;
   }
 
   #table{
-      background-color: aquamarine;
+      /* background-color: aquamarine; */
   }

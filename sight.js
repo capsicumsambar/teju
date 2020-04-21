@@ -27,9 +27,9 @@ function addRow() {
   var td2 = document.createElement("td");
   var td3 = document.createElement("td");    
 
-  td1.innerHTML = document.getElementById("word1").value.toLowerCase();
-  td2.innerHTML  = document.getElementById("word2").value.toLowerCase();
-  td3.innerHTML  = document.getElementById("word3").value.toLowerCase();
+  td1.innerHTML = document.getElementById("word1").value.toLowerCase().trim();
+  td2.innerHTML  = document.getElementById("word2").value.toLowerCase().trim();
+  td3.innerHTML  = document.getElementById("word3").value.toLowerCase().trim();
 
   row.appendChild(td1);
   row.appendChild(td2);
@@ -75,14 +75,22 @@ recognition.onresult = function(event) {
     }
   }
   sightTableArray = sightTableArray.map(e1 => e1.trim()) //ensures words entered are deleted of leading spaces 
+  console.log(sightTableArray)
   // array of sight words created above
-
-  var wordSpoke = event.results[0][0].transcript; //capture spoken word using webspeech API 
+  
+  //capture spoken word using webspeech API
+  var wordSpoke = event.results[0][0].transcript;  
   diagnostic.innerHTML = 'You spoke: ' +  '<span style="color:red">' + wordSpoke + '</span>';
   if(sightTableArray.includes(wordSpoke)){
+    wordSpoke = wordSpoke.valueOf(); // not sure if valueOf is really needed
     for(let i=0; i<noofRows; i++){
       for(let j=0;j<noofCols; j++){
-        if(table.rows[i].cells[j].innerHTML == wordSpoke)table.rows[i].cells[j].style.backgroundColor = "orange"
+        wordCheck = table.rows[i].cells[j].innerHTML.valueOf(); //not sure if valueOf is really needed
+        console.log(table.rows[i].cells[j].innerHTML);
+        if(wordCheck == wordSpoke){
+          table.rows[i].cells[j].innerHTML = "Good job!";
+          table.rows[i].cells[j].style.color = "green";
+        }
       }
     }
     $('h5').remove();
