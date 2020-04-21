@@ -79,7 +79,7 @@ recognition.onresult = function(event) {
   // array of sight words created above
   
   //capture spoken word using webspeech API
-  var wordSpoke = event.results[0][0].transcript;  
+  var wordSpoke = event.results[0][0].transcript.toLowerCase();  
   diagnostic.innerHTML = 'You spoke: ' +  '<span style="color:red">' + wordSpoke + '</span>';
   if(sightTableArray.includes(wordSpoke)){
     wordSpoke = wordSpoke.valueOf(); // not sure if valueOf is really needed
