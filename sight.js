@@ -41,6 +41,10 @@ function addRow() {
   document.getElementById("word3").value = " "
 };
 //end of addRow
+// deleteRow is used for deleting the top rows
+function deleteRow(){
+  document.getElementById("table").deleteRow(0);
+}
 
 //Use webspeech API: https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API
 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition

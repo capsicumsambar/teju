@@ -21,14 +21,17 @@
 
     </head>
     <body>
-        <div class="container p-3">
-        <!-- Header -->          
-        <div class="row">                
-            <div class="col text-center p-2">
-                <h2 style="color:chocolate">Practice sight words and sentences!</h2>
-                <h5>Click mic, say word or sentence from table</h5>                
+        <!-- Header -->
+        <div class="container-fluid p-3">                  
+            <div class="row">                
+                <div class="col text-center p-2" style="background-color: rgb(190, 247, 173);border-style: groove;">
+                    <h2 style="color:chocolate;">Practice sight words and sentences!</h2>
+                    <h5>Click mic, say word or sentence from table</h5>                
+                </div>
             </div>
         </div>
+        <!-- Middle section of the page -->
+        <div class="container p-3">
         <div class="row">
         <!-- Left 1-quarter section of the app -->
             <div class="col-3 border border-2">
@@ -51,92 +54,112 @@
             <div class="col-9">
        
         <!-- Mic and points button -->
-        <div class="row px-4 mx-auto sticky-top ">
-            <div class="col"></div>
-            <div class="col">
-                <img class="mx-auto" src="mic4.jpg" id='sightbutton' width='120' height='120' />
-            </div>
-            <div class="col"></div>
-            <div class="col">
-                <p id="points" class="text-center mt-5 card card-header bg-lg bg-success text-white" style="font-size: 1.25rem;"> SCORE </p>
-            </div>
-            
-        </div>
+                <div class="row px-4 mx-auto sticky-top ">
+                    <div class="col"></div>
+                    <div class="col">
+                        <img class="mx-auto" src="mic4.jpg" id='sightbutton' width='120' height='120' />
+                    </div>
+                    <div class="col"></div>
+                    <div class="col">
+                        <p id="points" class="text-center mt-5 card card-header bg-lg bg-success text-white" style="font-size: 1.25rem;"> SCORE </p>
+                    </div>
+                    
+                </div>
         <!-- Spoken word display -->
-        <div class="row px-4">
-            <div class="col text-center p-4">
-                <p class="output" style="color:rgb(39, 2, 39)"><em>[Spoken word will be shown here]</em></p>
-            </div>
-        </div>
+                <div class="row px-4">
+                    <div class="col text-left p-4">
+                        <p class="output" style="color:rgb(39, 2, 39)"><em>[Spoken word will be shown here]</em></p>
+                    </div>
+                </div>
         <!-- Word table -->
-        <div class="row mx-auto">
-            <div class="col">
-                <table id="table" class="table table-bordered text-center">
-                    <tr>
-                        <td>how are you</td>
-                        <td>walk with me</td>
-                        <td>i like animals</td>
-                    </tr>
-                    <tr>
-                        <td>new</td>
-                        <td>our</td>
-                        <td>who</td>
-                    </tr>
-                    <tr>
-                        <td>was</td>
-                        <td>said</td>
-                        <td>end</td>
-                    </tr>
-                    <tr>
-                        <td>away</td>
-                        <td>each</td>
-                        <td>word</td>
-                    </tr>
-                    <tr>
-                        <td>when</td>
-                        <td>what</td>
-                        <td>why</td>
-                    </tr>
-                    <tr>
-                        <td>where</td>
-                        <td>funny</td>
-                        <td>little</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+                <div class="row mx-auto">
+                    <div class="col">
+                        <table id="table" class="table table-bordered text-center">
+                            <tr>
+                                <td>how are you</td>
+                                <td>walk with me</td>
+                                <td>i like animals</td>
+                            </tr>
+                            <tr>
+                                <td>new</td>
+                                <td>our</td>
+                                <td>who</td>
+                            </tr>
+                            <tr>
+                                <td>was</td>
+                                <td>said</td>
+                                <td>end</td>
+                            </tr>
+                            <tr>
+                                <td>away</td>
+                                <td>each</td>
+                                <td>word</td>
+                            </tr>
+                            <tr>
+                                <td>when</td>
+                                <td>what</td>
+                                <td>why</td>
+                            </tr>
+                            <tr>
+                                <td>where</td>
+                                <td>funny</td>
+                                <td>little</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
         <br>
          <!--Starting words and sentences  -->
-            <div class="row  mx-auto mb-5">
-               <div class="col"> <input class="wordInput input-group" type="text" name="word1" id="word1" /></div>              
-               <div class="col"> <input class="wordInput input-group" type="text" name="word2" id="word2" /> </div>              
-                <div class="col"> <input class="wordInput input-group" type="text" name="word3" id="word3" /> </div>
-            </div>
+                <div class="row  mx-auto mb-5">
+                <div class="col"> <input class="wordInput input-group" type="text" name="word1" id="word1" /></div>              
+                <div class="col"> <input class="wordInput input-group" type="text" name="word2" id="word2" /> </div>              
+                    <div class="col"> <input class="wordInput input-group" type="text" name="word3" id="word3" /> </div>
+                </div>
 
         <!-- Add more words and sentences -->
+                <div class="row  mx-auto m-2">
+                    <div class="col">
+                        <button type="button" class="btn btn-primary btn-block"  onclick="addRow()" id="add">
+                            Add more words or sentences 
+                        </button>
+                    </div>
+                </div>  
+         
+            
+        <!-- Delete rows -->
             <div class="row  mx-auto m-2">
                 <div class="col">
-                    <button type="button" class="btn btn-primary btn-block"  onclick="addRow()" id="add">
-                        Add more words or sentences 
+                    <button type="button" class="btn btn-danger btn-block"  onclick="deleteRow()" id="delete">
+                        Delete top row 
                     </button>
                 </div>
+            </div>   
+        
+        <!-- Refresh button -->
+             <div class="row  mx-auto m-2">
+                <div class="col">
+                    <button type="button" class="btn btn-danger btn-block"  onclick="location.reload()" id="refresh">
+                        Refresh:Default table, Score reset 
+                    </button>
+                </div>
+            </div>   
+        <br>
             </div>
             
-            <br> 
-            <br>
-            </div>
         </div>   
         </div>
-        <div class="container">
-            <div class="row">
+        <!-- Footer -->
+        <div class="container-fluid">
+            <div class="row" style="background-color: rgb(190, 247, 173);border-style: groove">
                 <div class="col">
-                    <p>This app is an attempt to help my son practice sight-reading, 
+                  
+                    <p class="m-3">This app is an attempt to help my son practice sight-reading, 
                         the hope is it benefits more students. I used 
                         <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API">Mozilla's free Webspeech API.</a> 
                         Any comments please message me via <a href="https://www.linkedin.com/in/karthiksuri/">LinkedIn.</a>
                     </p> 
                 
-                    <p class="text-center">&copy 2020 Karthik Suryanarayanan. Licensed under the Apache License, Version 2.0 </p>
+                    <p class="text-center pb-1">&copy 2020 Karthik Suryanarayanan. Licensed under the Apache License, Version 2.0 </p>
                 </div>
             </div>
         </div>
