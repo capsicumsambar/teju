@@ -61,7 +61,7 @@ sightbutton.onclick = function() {
   recognition.start();
   console.log('Ready to receive a word command.');
 }
-
+var points=0; // declaring points before the recognition onresult method is fired
 //function for showing results of spoken words
 recognition.onresult = function(event) { 
   // coverting HTML table to JS array to check if spoken word is in the sight table box
@@ -82,20 +82,23 @@ recognition.onresult = function(event) {
   var wordSpoke = event.results[0][0].transcript.toLowerCase();  
   diagnostic.innerHTML = 'You spoke: ' +  '<span style="color:red">' + wordSpoke + '</span>';
   if(sightTableArray.includes(wordSpoke)){
+    points++;
     wordSpoke = wordSpoke.valueOf(); // not sure if valueOf is really needed
     for(let i=0; i<noofRows; i++){
       for(let j=0;j<noofCols; j++){
         wordCheck = table.rows[i].cells[j].innerHTML.valueOf(); //not sure if valueOf is really needed
         console.log(table.rows[i].cells[j].innerHTML);
         if(wordCheck == wordSpoke){
-          table.rows[i].cells[j].innerHTML = "Good job!";
-          table.rows[i].cells[j].style.color = "green";
+          table.rows[i].cells[j].innerHTML = wordCheck + ": Good job!";
+          table.rows[i].cells[j].style.backgroundColor = "rgb(255,160,122)";
+          table.rows[i].cells[j].style.color = "white";
         }
       }
     }
-    $('h5').remove();
-    $('h6').remove();
-    $('#sticker').append("<div class='sticker-img'><img src='stallion.jpg' width='120' height='120'></div>");
+    // $('h5').remove();
+    // $('h6').remove();
+    $('#points').html(points);
+    // $('#sticker').append("<div class='sticker-img'><img src='stallion.jpg' width='120' height='120'></div>"); 
     // document.querySelector('#airhorn').play();
   };
   console.log(sightTableArray)

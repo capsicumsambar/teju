@@ -21,32 +21,51 @@
 
     </head>
     <body>
-        <div class="container">
-        <!-- Header -->
-            <br>
-            <div class="row">                
-                <div class="col text-center p-2"><h2>Sight words, Speak up!</h2></div>
-            </div> 
-        <!-- Section where stickers appear -->
-        <div class="row px-4">
-            <div id="sticker" class="px-5 p-3 table-bordered">
-                <h6>Click the red mic and ask your child to read one word at a time from the box below</h5>
-                <h6>Please ensure that this site is accessed via https:// - else mic will not work</h6>
-                <h6>Request your child to speak the word normally, the free webspeech API used is not perfect, takes some getting used to</h6>
-                <h6>This app works only on notebook/desktop/android Chrome/Mozilla</h6>
-                <h6>Add more words to the table via input boxes</h5>
-                <h6>Each word spoken right will earn a digital sticker on this box</h5>
-                <!-- <audio id="airhorn" src="wildkratts.m4a" autoplay="false"></audio> -->
+        <div class="container p-3">
+        <!-- Header -->          
+        <div class="row">                
+            <div class="col text-center p-2">
+                <h2 style="color:chocolate">Practice sight words and sentences!</h2>
+                <h5>Click mic, say word or sentence from table</h5>                
             </div>
         </div>
-        <!-- Mic button -->
-        <div class="row px-4 mx-auto ">
-            <img class="mx-auto" src="mic2.jpg" id='sightbutton' width='120' height='120' />
+        <div class="row">
+        <!-- Left 1-quarter section of the app -->
+            <div class="col-3 border border-2">
+                <br>
+                <h5 class="bg-dark text-white p-3">To keep in mind...</h5>
+                <br>
+                <h6>This sight words app is for K-2 students who like to practice reading words/sentences</h6>
+                <br>
+                <h6>The primary feature is <span style="color:darkcyan"><i>speech-to-text</i></span>: As students speak off of the table the voice is 
+                    converted to text and compared, if there is a match points are scored </h6>
+                <br>
+                <h6>This app works only on PC and Android's Chrome / Mozilla browsers</h6>
+                <br>
+                <h6>Please you use https:// - else mic will not work</h6>
+                <br>
+                <h6>The webspeech API is good but is not perfect, 
+                    some utterances may not be accurately captured, after a few tries the student will figure out the pacing needed</h6> 
+            </div>
+        <!-- Right 3-quarters section of the app -->
+            <div class="col-9">
+       
+        <!-- Mic and points button -->
+        <div class="row px-4 mx-auto sticky-top ">
+            <div class="col"></div>
+            <div class="col">
+                <img class="mx-auto" src="mic4.jpg" id='sightbutton' width='120' height='120' />
+            </div>
+            <div class="col"></div>
+            <div class="col">
+                <p id="points" class="text-center mt-5 card card-header bg-lg bg-success text-white" style="font-size: 1.25rem;"> SCORE </p>
+            </div>
+            
         </div>
         <!-- Spoken word display -->
         <div class="row px-4">
             <div class="col text-center p-4">
-                <p class="output" style="color:rgb(39, 2, 39)"><em>[The spoken word will be shown here]</em></p>
+                <p class="output" style="color:rgb(39, 2, 39)"><em>[Spoken word will be shown here]</em></p>
             </div>
         </div>
         <!-- Word table -->
@@ -54,27 +73,72 @@
             <div class="col">
                 <table id="table" class="table table-bordered text-center">
                     <tr>
-                        <td>here</td>
+                        <td>how are you</td>
+                        <td>walk with me</td>
+                        <td>i like animals</td>
+                    </tr>
+                    <tr>
+                        <td>new</td>
+                        <td>our</td>
+                        <td>who</td>
+                    </tr>
+                    <tr>
+                        <td>was</td>
+                        <td>said</td>
+                        <td>end</td>
+                    </tr>
+                    <tr>
+                        <td>away</td>
+                        <td>each</td>
+                        <td>word</td>
+                    </tr>
+                    <tr>
+                        <td>when</td>
                         <td>what</td>
-                        <td>look</td>
+                        <td>why</td>
+                    </tr>
+                    <tr>
+                        <td>where</td>
+                        <td>funny</td>
+                        <td>little</td>
                     </tr>
                 </table>
             </div>
         </div>
         <br>
-         <!--Add more words input table  -->
-            <div class="row  mx-auto">
-               <div class="col"> <input class="wordInput" type="text" name="word1" id="word1" /></div>              
-               <div class="col"> <input class="wordInput" type="text" name="word2" id="word2" /> </div>              
-                <div class="col"> <input class="wordInput" type="text" name="word3" id="word3" /> </div>
+         <!--Starting words and sentences  -->
+            <div class="row  mx-auto mb-5">
+               <div class="col"> <input class="wordInput input-group" type="text" name="word1" id="word1" /></div>              
+               <div class="col"> <input class="wordInput input-group" type="text" name="word2" id="word2" /> </div>              
+                <div class="col"> <input class="wordInput input-group" type="text" name="word3" id="word3" /> </div>
+            </div>
+
+        <!-- Add more words and sentences -->
+            <div class="row  mx-auto m-2">
                 <div class="col">
-                    <button type="button" class="btn btn-primary" onclick="addRow()" id="add">
-                        Add words to table above
+                    <button type="button" class="btn btn-primary btn-block"  onclick="addRow()" id="add">
+                        Add more words or sentences 
                     </button>
                 </div>
             </div>
+            
             <br> 
-            <br>   
+            <br>
+            </div>
+        </div>   
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <p>This app is an attempt to help my son practice sight-reading, 
+                        the hope is it benefits more students. I used 
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API">Mozilla's free Webspeech API.</a> 
+                        Any comments please message me via <a href="https://www.linkedin.com/in/karthiksuri/">LinkedIn.</a>
+                    </p> 
+                
+                    <p class="text-center">&copy 2020 Karthik Suryanarayanan. Licensed under the Apache License, Version 2.0 </p>
+                </div>
+            </div>
         </div>
         <script src="sight.js"></script>
     </body>
