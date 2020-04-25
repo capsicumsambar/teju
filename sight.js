@@ -62,12 +62,43 @@ var table = document.getElementById("table");// redeclaring as above table decla
 
 // word spoken event is fired after sightbutton is clicked
 sightbutton.onclick = function() {
+  // $("addtimer").append("<div id='timer' class='fa'></div>"); //adding timer back for second and beyond mic clicks
   recognition.start();
+  // timer start/end function after mic is clicked
+  function timer() {
+    var a;
+    a = document.getElementById("timer");
+    a.innerHTML = "&#xf254;"+"<br><br> 6 ";
+    setTimeout(function () {
+        a.innerHTML = "&#xf251;"+"<br><br> 5 ";
+      }, 1000);
+    setTimeout(function () {
+        a.innerHTML = "&#xf252;"+"<br><br>  4 ";
+      }, 2000);
+    setTimeout(function () {
+        a.innerHTML = "&#xf253;"+"<br><br> 3 ";
+      }, 3000);
+    setTimeout(function () {
+        a.innerHTML = "&#xf250;"+"<br><br> 2 ";
+      }, 4000);
+    setTimeout(function () {
+      a.innerHTML = "&#xf250;"+"<br><br> 1 ";
+    }, 5000);
+    setTimeout(function () {
+      a.innerHTML = "&#xf250;"+"<br><br>  0 ";
+    }, 6000);    
+    setTimeout(function () {
+      a.innerHTML = "<br><br> Click mic and speak again";
+    }, 7000);
+  }
+  timer();
+  // setInterval(timer, 5000);
   console.log('Ready to receive a word command.');
 }
 var points=0; // declaring points before the recognition onresult method is fired
 //function for showing results of spoken words
-recognition.onresult = function(event) { 
+recognition.onresult = function(event) {
+  // $(".col-3").hide();
   // coverting HTML table to JS array to check if spoken word is in the sight table box
   var sightTableArray = [];
   var x = document.getElementById("table");
@@ -99,8 +130,6 @@ recognition.onresult = function(event) {
         }
       }
     }
-    // $('h5').remove();
-    // $('h6').remove();
     $('#points').html(points);
     // $('#sticker').append("<div class='sticker-img'><img src='stallion.jpg' width='120' height='120'></div>"); 
     // document.querySelector('#airhorn').play();
