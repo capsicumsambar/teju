@@ -27,30 +27,36 @@
             <div class="row">                
                 <div class="col text-center p-2" style="background-color: rgb(190, 247, 173);border-style: groove;">
                     <h2 style="color:chocolate;">Practice sight words and sentences!</h2>
-                    <h5>Click mic, say word or sentence from table</h5>                
-                </div>
+                    <h5>Click mic, say word or sentence from table</h5>
+                        <h6 class="p-3 m-3">Works in all Chrome except iPhone/iPad &nbsp
+                            <img width="30" height="30"  src="info.png" id="instructionsbutton">
+                        </h6>
+                        
             </div>
         </div>
         <!-- Middle section of the page -->
         <div class="container p-3">
         <div class="row">
         <!-- Left 1-quarter section of the app -->
-            <div class="col-3 border border-2">
+            <div class="col-3" id="instructions">
                 <br>
-                <h5 class="bg-dark text-white p-3">To keep in mind...</h5>
                 <br>
-                <h6>This sight words app is for K-2 students who like to practice reading words/sentences</h6>
-                <br>
-                <h6>The primary feature is <span style="color:darkcyan"><i>speech-to-text</i></span>: As students speak off of the table the voice is 
-                    converted to text and compared, if there is a match points are scored </h6>
-                <br>
-                <h6>This app works only on PC and Android's Chrome browser</h6>
-                <br>
-                <h6>The webspeech API is good but is not perfect, 
-                    some utterances may not be accurately captured, after a few tries the student will figure out the pacing needed</h6> 
+                <div>
+                    <h6>This sight words app is for K-2 students who like to practice reading words/sentences</h6>
+                    <br>
+                    <h6>The primary feature is <span style="color:darkcyan"><i>speech-to-text</i></span>: As students speak off of the table the voice is 
+                        converted to text and compared, if there is a match points are scored </h6>
+                    <br>
+                    <h6>This app works only on PC and Android's Chrome browser</h6>
+                    <br>
+                    <h6>The webspeech API is good but is not perfect, 
+                        some utterances may not be accurately captured, after a few tries the student 
+                        will figure out the pacing needed
+                    </h6> 
+                </div>
             </div>
         <!-- Right 3-quarters section of the app -->
-            <div class="col-9">
+            <div class="col-9" id="rightthreecols">
        
         <!-- Mic and points button -->
                 <div class="row px-4 mx-auto sticky-top ">
@@ -62,18 +68,21 @@
                         <div id="timer" class="fa"></div>
                     </div>
                     <div class="col">
-                        <p id="points" class="text-center mt-5 card card-header bg-lg bg-success text-white" style="font-size: 1.25rem;"> SCORE </p>
+                        <p id="points" class="text-center mt-5 card card-header bg-lg bg-success text-white" 
+                        style="font-size: 1.25rem;"> SCORE </p>
+                        <audio id="airhorn" src="airhorn.mp3" autoplay="false"></audio>
                     </div>   
                 </div>
         <!-- Spoken word display -->
                 <div class="row px-4">
                     <div class="col text-left p-4">
                         <p class="output" style="color:rgb(39, 2, 39)"></p>
+                        <div id="successimg"></div>
                     </div>
                 </div>
         <!-- Word table -->
                 <div class="row mx-auto">
-                    <div class="col">
+                    <div class="col-10">
                         <table id="table" class="table table-bordered text-center">
                             <tr>
                                 <td>how are you</td>
@@ -107,13 +116,16 @@
                             </tr>
                         </table>
                     </div>
+                    <div class="col-2">
+                        <img src="delete.png" width="40" height="40" onclick="deleteRow()">
+                    </div>
                 </div>
         <br>
          <!--Starting words and sentences  -->
                 <div class="row  mx-auto mb-5">
-                <div class="col"> <input class="wordInput input-group" type="text" name="word1" id="word1" /></div>              
+                <div class="col"> <input class="wordInput input-group border border-3" type="text" name="word1" id="word1" /></div>              
                 <div class="col"> <input class="wordInput input-group" type="text" name="word2" id="word2" /> </div>              
-                    <div class="col"> <input class="wordInput input-group" type="text" name="word3" id="word3" /> </div>
+                <div class="col"> <input class="wordInput input-group" type="text" name="word3" id="word3" /> </div>
                 </div>
 
         <!-- Add more words and sentences -->
@@ -127,13 +139,13 @@
          
             
         <!-- Delete rows -->
-            <div class="row  mx-auto m-2">
+            <!-- <div class="row  mx-auto m-2">
                 <div class="col">
                     <button type="button" class="btn btn-danger btn-block"  onclick="deleteRow()" id="delete">
                         Delete top row 
                     </button>
                 </div>
-            </div>   
+            </div>    -->
         
         <!-- Refresh button -->
              <div class="row  mx-auto m-2">

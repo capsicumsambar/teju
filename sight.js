@@ -60,8 +60,11 @@ recognition.maxAlternatives = 1;
 var diagnostic = document.querySelector('.output'); 
 var table = document.getElementById("table");// redeclaring as above table declaration is local
 
+
+
 // word spoken event is fired after sightbutton is clicked
 sightbutton.onclick = function() {
+  // $('#partyimg').remove();
   // $("addtimer").append("<div id='timer' class='fa'></div>"); //adding timer back for second and beyond mic clicks
   recognition.start();
   // timer start/end function after mic is clicked
@@ -131,8 +134,10 @@ recognition.onresult = function(event) {
       }
     }
     $('#points').html(points);
-    // $('#sticker').append("<div class='sticker-img'><img src='stallion.jpg' width='120' height='120'></div>"); 
-    // document.querySelector('#airhorn').play();
+    $('#successimg').append("<img id='partyimg' width='120' height='120' src='wildkratts.jpg'>"); 
+    
+
+    document.querySelector('#airhorn').play();
   };
   console.log(sightTableArray)
   console.log('Confidence: ' + event.results[0][0].confidence);
@@ -149,3 +154,10 @@ recognition.onnomatch = function(event) {
 recognition.onerror = function(event) {
   diagnostic.textContent = 'Error occurred in recognition: ' + event.error;
 }
+
+$("#instructions").hide();
+$("#rightthreecols").toggleClass("col-12");
+$("#instructionsbutton").click(function(){
+    $("#instructions").toggle();
+    $("#rightthreecols").toggleClass("col-12");
+});
