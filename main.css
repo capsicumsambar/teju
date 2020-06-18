@@ -14,14 +14,6 @@
     }
 
 
-  #sticker{
-    /*border: 1px solid black;*/
-    height: 150px;   
-  background-color: #eee;
-  width: 100%;
-  display: table;
-  margin-bottom: 20px;
-  }
 
   #add-row{
     /*border: 1px solid black;*/
@@ -39,14 +31,6 @@
   }
   
 
-  .sticker-img{
-  display: table-cell;
-  padding: 20px;
-  }
-
-  .sticker-img img {
-  max-width: 100%;
-}
 
 
    #no1, #no4{
@@ -68,6 +52,3 @@
     width:100%;
   }
 
-    #table td{
-      padding: 10px;
-    }

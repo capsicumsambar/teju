@@ -23,20 +23,34 @@
     <body>
       
         <!-- heading section-->
-        <div class="d-flex justify-content-center m-3">  
-            <h2 class="text-center"> Hello! Play Math below!</h2>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="font-size: 1rem;">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.karthiksuri.com/quiz">Charts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="http://www.karthiksuri.com/teju">Numbers</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://www.tableofwords.com">Words</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="container-fluid text-center" style="background-color: bisque;">                  
+          <div class="row">  
+            <div class="col py-3">
+              <h4>Adding and subtracting numbers!</h4>
+            </div>              
+          </div>
         </div>
-        <div class="d-flex justify-content-center m-3">
-            <h2 class="text-center"> or play <a href=sight.html>Sight Words</a></h2>
-        </div>
-        
-
-
         <!-- Section where stickers appear -->
-          <div id="sticker">
-            <h3>How many stickers can you get?</h3>
-            <audio id="airhorn" src="wildkratts.m4a" autoplay="false"></audio>
-          </div>    
+        <div class="container-fluid text-center mt-3">                  
+          <div class="row">
+            <div class="col">
+              <div id="sticker" style="background-color: white;">
+              </div>              
+            </div>
+        </div>    
           
         <!-- Inputs and events -->
 
@@ -86,15 +100,15 @@
           }
 
           // sets the two numbers for addition using random method 
-          document.querySelector("#no1").innerHTML = getRandomInt(15,20);
+          document.querySelector("#no1").innerHTML = getRandomInt(5,30);
           var no1 = document.querySelector("#no1").innerHTML;
-          document.querySelector("#no2").innerHTML = getRandomInt(25,30);
+          document.querySelector("#no2").innerHTML = getRandomInt(15,50);
           var no2 = document.querySelector("#no2").innerHTML;
           
           // sets the two numbers for subtraction using random method 
-          document.querySelector("#no4").innerHTML = getRandomInt(25,30);
+          document.querySelector("#no4").innerHTML = getRandomInt(25,50);
           var no4 = document.querySelector("#no4").innerHTML;
-          document.querySelector("#no5").innerHTML = getRandomInt(10,14);;
+          document.querySelector("#no5").innerHTML = getRandomInt(5,20);;
           var no5 = document.querySelector("#no5").innerHTML;
 
           // resets the numbers for addition using random method
@@ -102,9 +116,9 @@
             // //Addition resets
             $("#check").attr("disabled", true);  
             $("#no3").css('font-size','0.5em');
-            document.querySelector("#no1").innerHTML = getRandomInt(15,20);
+            document.querySelector("#no1").innerHTML = getRandomInt(5,30);
             no1 = document.getElementById("no1").innerHTML;
-            document.getElementById("no2").innerHTML = getRandomInt(25,30);;
+            document.getElementById("no2").innerHTML = getRandomInt(15,50);;
             no2 = document.getElementById("no2").innerHTML;
             document.querySelector('#numinput').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
             document.querySelector('#no3').innerHTML = "Let's see if you are right";
@@ -112,9 +126,9 @@
             //Subtraction resets
             $("#check2").attr("disabled", true);  
             $("#no6").css('font-size','0.5em');
-            document.querySelector("#no4").innerHTML = getRandomInt(25,30);
+            document.querySelector("#no4").innerHTML = getRandomInt(25,50);
             no4 = document.getElementById("no4").innerHTML;
-            document.getElementById("no5").innerHTML = getRandomInt(10,14);;
+            document.getElementById("no5").innerHTML = getRandomInt(5,20);;
             no5 = document.getElementById("no5").innerHTML;
             document.querySelector('#numinput2').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
             document.querySelector('#no6').innerHTML = "Let's see if you are right";
@@ -122,6 +136,9 @@
 
             //event handler functions
           $(document).ready(function(){ //jQuery
+            var arrAnimalImg = ['lion.jpg','tiger.jpg','puma.jpg','ocelot.jpg','greywolf.jpg','cheetah.jpg',
+                        'whitetiger.jpg','leopard.jpg','rustycat.jpg','jaguar.jpg'];
+            var animalImg = arrAnimalImg[Math.floor(Math.random()*10)];
           //Addition event handlers 
               $('#numinput').keypress(function(){
                 $("#check").attr("disabled", false); //activate check button only after input box has input
@@ -133,10 +150,10 @@
                 $("#no3").css('font-size','0.5em');
                 if($('#numinput').val()*1 == no1*1 + no2*1){ //checks user input vs sum of the two numbers calculated
                   $('h3').remove();
-                  $('#sticker').append("<div class='sticker-img'><img src='wildkratts.jpg' width='120' height='120'></div>");
-                  document.querySelector('#airhorn').play();
+                  $('#sticker').append(`<img width='120' height='120' src=${animalImg}>`);
                   $("#check").attr("disabled", true); 
-                  } else $("#check").attr("disabled", true);  
+                  } else $("#check").attr("disabled", true);
+                animalImg = arrAnimalImg[Math.floor(Math.random()*10)];  
             }); 
 
             //Subtraction event handlers
@@ -150,10 +167,10 @@
                 $("#no6").css('font-size','0.5em');
                 if($('#numinput2').val()*1 == no4*1 - no5*1){ //checks user input vs subtraction of the two numbers calculated
                   $('h3').remove();
-                  $('#sticker').append("<div class='sticker-img'><img src='wildkratts.jpg' width='120' height='120'></div>");
-                  document.querySelector('#airhorn').play();
+                  $('#sticker').append(`<img width='120' height='120' src=${animalImg}>`);
                   $("#check2").attr("disabled", true); 
-                  } else $("#check2").attr("disabled", true);  
+                  } else $("#check2").attr("disabled", true);
+                  animalImg = arrAnimalImg[Math.floor(Math.random()*10)];  
             }); 
 
           });
