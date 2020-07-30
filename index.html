@@ -34,6 +34,9 @@
             <li class="nav-item">
               <a class="nav-link" href="http://www.tableofwords.com">Words</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="http://karthiksuri.com/animalquiz">Animal Quiz</a>
+            </li>
           </ul>
         </nav>
         <div class="container-fluid text-center" style="background-color: bisque;">                  
@@ -114,7 +117,9 @@
           // resets the numbers for addition using random method
           function tryAnother(){
             // //Addition resets
-            $("#check").attr("disabled", true);  
+            $("#check").attr("disabled", true);
+            $('#numinput').prop("disabled",false);
+            $('#numinput2').prop("disabled",false);    
             $("#no3").css('font-size','0.5em');
             document.querySelector("#no1").innerHTML = getRandomInt(5,30);
             no1 = document.getElementById("no1").innerHTML;
@@ -151,7 +156,8 @@
                 if($('#numinput').val()*1 == no1*1 + no2*1){ //checks user input vs sum of the two numbers calculated
                   $('h3').remove();
                   $('#sticker').append(`<img width='120' height='120' src=${animalImg}>`);
-                  $("#check").attr("disabled", true); 
+                  $("#check").attr("disabled", true);
+                  $('#numinput').prop("disabled",true); 
                   } else $("#check").attr("disabled", true);
                 animalImg = arrAnimalImg[Math.floor(Math.random()*10)];  
             }); 
@@ -169,6 +175,7 @@
                   $('h3').remove();
                   $('#sticker').append(`<img width='120' height='120' src=${animalImg}>`);
                   $("#check2").attr("disabled", true); 
+                  $('#numinput2').prop("disabled",true);
                   } else $("#check2").attr("disabled", true);
                   animalImg = arrAnimalImg[Math.floor(Math.random()*10)];  
             }); 
