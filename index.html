@@ -59,6 +59,23 @@
 
         <div class="container px-4">
 
+          <!-- Multiplication row -->
+          <div class="row justify-content-center" style="color:rgb(5, 138, 82)">Multiply</div>
+          <br>
+
+          <div class="row align-items-center">
+            <div class="col" id="no7"></div>
+            <div class="col">x</div>
+            <div class="col" id="no8"></div>
+            <div class="col">=</div>
+            <input class="col " type="number" id="numinput3" name="display"></input>
+            <div class="col h4 text-center" id="no9">Let's see if you are right</div>
+            <button type="button" class="col btn btn-warning btn-md m-4" id="check3" disabled="true">Check</button>
+            <button type="button" class="col btn btn-primary btn-md" onClick="tryAnother()">Try another</button>
+          </div> 
+          <br>
+          <br>
+
           <!-- Addition row -->
           <div class="row justify-content-center" style="color:blueviolet">Add</div>
           <br>
@@ -93,7 +110,7 @@
           </div> 
           <br>
           <br>
-
+          
         <script>
           //function to return random numbers within a range
           function getRandomInt(min, max) {
@@ -102,6 +119,12 @@
             return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
           }
 
+          // sets the two numbers for multiplication using random method 
+          document.querySelector("#no7").innerHTML = getRandomInt(5,20);
+          var no7 = document.querySelector("#no7").innerHTML;
+          document.querySelector("#no8").innerHTML = getRandomInt(1,10);
+          var no8 = document.querySelector("#no8").innerHTML;
+          
           // sets the two numbers for addition using random method 
           document.querySelector("#no1").innerHTML = getRandomInt(5,30);
           var no1 = document.querySelector("#no1").innerHTML;
@@ -114,12 +137,25 @@
           document.querySelector("#no5").innerHTML = getRandomInt(5,20);;
           var no5 = document.querySelector("#no5").innerHTML;
 
-          // resets the numbers for addition using random method
+          // resets the numbers for math operations using random method
           function tryAnother(){
+            // Disabling check when no input
+            $('#numinput').prop("disabled",false);
+            $('#numinput2').prop("disabled",false);
+            $('#numinput3').prop("disabled",false);
+
+            // //Multiplication resets
+            $("#check3").attr("disabled", true);    
+            $("#no9").css('font-size','0.5em');
+            document.querySelector("#no7").innerHTML = getRandomInt(5,20);
+            no7 = document.getElementById("no7").innerHTML;
+            document.getElementById("no8").innerHTML = getRandomInt(1,10);;
+            no8 = document.getElementById("no8").innerHTML;
+            document.querySelector('#numinput3').value = ""; // when 'tryanother' button pressed again, resets value of input box to blank
+            document.querySelector('#no9').innerHTML = "Let's see if you are right";
+
             // //Addition resets
             $("#check").attr("disabled", true);
-            $('#numinput').prop("disabled",false);
-            $('#numinput2').prop("disabled",false);    
             $("#no3").css('font-size','0.5em');
             document.querySelector("#no1").innerHTML = getRandomInt(5,30);
             no1 = document.getElementById("no1").innerHTML;
@@ -144,6 +180,23 @@
             var arrAnimalImg = ['lion.jpg','tiger.jpg','puma.jpg','ocelot.jpg','greywolf.jpg','cheetah.jpg',
                         'whitetiger.jpg','leopard.jpg','rustycat.jpg','jaguar.jpg'];
             var animalImg = arrAnimalImg[Math.floor(Math.random()*10)];
+          //Multiplication event handlers 
+          $('#numinput3').keypress(function(){
+                $("#check3").attr("disabled", false); //activate check button only after input box has input
+              })
+              $("#check3").click(function(){ //checking using check button 
+                if($('#numinput3').val()*1 == no7*1 * no8*1){ //checks user input and displays apporpriate message
+                  document.querySelector("#no9").innerHTML = "Correct!"                  
+                } else document.querySelector("#no9").innerHTML = "Try again!" 
+                $("#no9").css('font-size','0.5em');
+                if($('#numinput3').val()*1 == no7*1 * no8*1){ //checks user input vs product of the two numbers calculated
+                  $('h3').remove();
+                  $('#sticker').append(`<img width='120' height='120' src=${animalImg}>`);
+                  $("#check").attr("disabled", true);
+                  $('#numinput').prop("disabled",true); 
+                  } else $("#check").attr("disabled", true);
+                animalImg = arrAnimalImg[Math.floor(Math.random()*10)];  
+            });
           //Addition event handlers 
               $('#numinput').keypress(function(){
                 $("#check").attr("disabled", false); //activate check button only after input box has input
